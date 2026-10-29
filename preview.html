@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinkora 🎀</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;text-align:center;color:#804368;background:linear-gradient(135deg,#ffe5f0,#e8ddff)}
+header{padding:24px 10px;background:#ffffff99}
+h1{color:#e75480;font-size:42px;margin:8px}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;padding:12px}
+button{border:0;border-radius:20px;padding:12px 16px;margin:4px;color:white;background:#f47eae;font-size:15px;cursor:pointer}
+button:hover{background:#d94c88}
+button:disabled{opacity:.45;cursor:not-allowed}
+section{padding:18px 10px}
+.card{background:white;border-radius:22px;padding:20px 14px;margin:14px auto;max-width:800px;box-shadow:0 5px 18px #cda6c966}
+.hidden{display:none!important}
+.big{font-size:48px}
+.lesson{text-align:right;line-height:1.9}
+.example{background:#fff0f7;padding:12px;border-radius:14px;margin:10px 0}
+.answer{display:block;width:100%;margin:8px 0;background:#eee3ff;color:#754c91;text-align:center}
+.answer:hover{background:#dfc9ff}
+.feedback{font-weight:bold;min-height:28px;line-height:1.7}
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.picture{background:white;border-radius:18px;padding:15px;font-size:40px}
+#arena{height:400px;position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(#e8ddff,#ffe8f3);touch-action:none}
+#bunny{position:absolute;bottom:8px;font-size:55px;transform:translateX(-50%);user-select:none}
+footer{padding:22px;background:#ffffff88}
+.level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;max-width:700px;margin:18px auto}
+.level-card{background:#fff0f7;border:2px solid #f6c3dc;border-radius:20px;padding:15px 8px}
+.level-card.locked{opacity:.6;background:#eeeaf2}
+.level-card h3{margin:8px 0}
+.level-card p{font-size:14px}
+.progress-track{height:12px;background:#f5d9e8;border-radius:20px;overflow:hidden;margin:12px auto;max-width:500px}
+.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,#f47eae,#b69aff);transition:width .3s}
+.quizArea{text-align:center}
+.quizQuestion{line-height:1.8}
+.quizTimer{color:#d94c88;font-size:22px;font-weight:bold}
+.quizResult{line-height:1.9;font-weight:bold}
+.lang-card{display:inline-block;vertical-align:top;width:min(100%,320px);margin:10px;background:#fff0f7;border:2px solid #f6c3dc;border-radius:22px;padding:20px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="big">🎀 🌷 🦋</div>
+  <h1>Pinkora</h1>
+  <p>Learn, Play & Dream! ✨</p>
+</header>
+
+<nav>
+  <button onclick="page('home')">Home 🏠</button>
+  <button onclick="page('arabic')">المجرّد والمزيد 📚</button>
+  <button onclick="page('english')">Present Simple 🇬🇧</button>
+  <button onclick="page('practice')">التحديات 🏆</button>
+  <button onclick="page('gallery')">Gallery 🎨</button>
+  <button onclick="page('game')">اللعبة 🐰</button>
+  <button onclick="page('about')">About 💗</button>
+</nav>
+
+<main>
+<section id="home">
+  <div class="card">
+    <div class="big">🌸</div>
+    <h2>Welcome to Pinkora!</h2>
+    <p>موقعك الجميل للتعلّم والمرح والإبداع.</p>
+    <button onclick="page('arabic')">ابدئي العربي 📚</button>
+    <button onclick="page('english')">ابدئي الإنجليزي 🇬🇧</button>
+    <button onclick="page('practice')">ابدئي التحديات 🏆</button>
+  </div>
+  <div class="card">
+    <h2>💖 نصيحة اليوم</h2>
+    <p>كل معلومة جديدة بتقرّبك من النجاح!</p>
+  </div>
+</section>
+
+<section id="arabic" class="hidden">
+  <div class="card lesson" dir="rtl">
+    <h2 style="text-align:center">📚 الفعل المجرّد والمزيد</h2>
+    <h3>أولًا: الفعل المجرّد</h3>
+    <p>هو الفعل الذي تكون جميع حروفه أصلية.</p>
+    <div class="example">
+      <b>الثلاثي المجرّد:</b> كتب، لعب، فهم.<br>
+      <b>الرباعي المجرّد:</b> دحرج، زلزل.
+    </div>
+    <h3>ثانيًا: الفعل المزيد</h3>
+    <p>هو فعل زِيد على حروفه الأصلية حرف أو أكثر.</p>
+    <div class="example">
+      <b>مزيد بحرف:</b> أكرم، علّم، شارك.<br>
+      <b>مزيد بحرفين:</b> تعلّم، انطلق، اجتمع.<br>
+      <b>مزيد بثلاثة أحرف:</b> استغفر، استخرج.
+    </div>
+    <h3>💡 إزاي أفرّق بينهم؟</h3>
+    <p>نرجع الفعل إلى أصله ونحدّد حروفه الأصلية، ثم نعرف هل زِيد عليها حرف أم لا.</p>
+    <div class="example">
+      كتب ← ثلاثي مجرّد.<br>
+      أكرم ← ثلاثي مزيد بحرف.<br>
+      استخرج ← ثلاثي مزيد بثلاثة أحرف.
+    </div>
+    <button onclick="openChallenge('ar')">اختبري نفسك ✏️</button>
+  </div>
+</section>
+
+<section id="english" class="hidden">
+  <div class="card lesson" dir="ltr">
+    <h2 style="text-align:center">🇬🇧 Present Simple</h2>
+    <h3>When do we use it?</h3>
+    <p>We use the Present Simple for habits, routines and facts.</p>
+    <div class="example">I play tennis every day.<br>She reads books.<br>The sun rises in the east.</div>
+    <h3>1. Positive sentences</h3>
+    <p>I / You / We / They + verb</p>
+    <p>He / She / It + verb-s or -es</p>
+    <div class="example">I play football.<br>He plays football.<br>She watches TV.</div>
+    <h3>2. Negative sentences</h3>
+    <p>I / You / We / They + don't + verb</p>
+    <p>He / She / It + doesn't + verb</p>
+    <div class="example">I don't like tea.<br>He doesn't like tea. ✅<br>He doesn't likes tea. ❌</div>
+    <h3>3. Questions</h3>
+    <p>Do + I/you/we/they + verb?</p>
+    <p>Does + he/she/it + verb?</p>
+    <div class="example">Do you play tennis?<br>Does she speak English?</div>
+    <h3>🔑 Keywords</h3>
+    <p>Always, usually, often, sometimes, never, every day.</p>
+    <button onclick="openChallenge('en')">Let's Practise! ✏️</button>
+  </div>
+</section>
+
+<!-- صفحة اختيار لغة التحدي -->
+<section id="practice" class="hidden">
+  <div class="card">
+    <div class="big">🏆</div>
+    <h2>Pinkora Challenge Zone 🎀</h2>
+    <p>اختاري اللغة اللي عايزة تتحدّي نفسك فيها!</p>
+    <div class="lang-card">
+      <div class="big">🌸</div>
+      <h2>التحديات العربية</h2>
+      <p>3 مستويات في اللغة العربية.</p>
+      <button onclick="openChallenge('ar')">ابدئي العربي 📚</button>
+    </div>
+    <div class="lang-card">
+      <div class="big">💜</div>
+      <h2>English Challenges</h2>
+      <p>Three levels in English.</p>
+      <button onclick="openChallenge('en')">Start English 🇬🇧</button>
+    </div>
+  </div>
+</section>
+
+<!-- تحديات العربي -->
+<section id="arabicChallenges" class="hidden">
+  <div class="card">
+    <h2>🌸 تحديات اللغة العربية</h2>
+    <p>الفعل المجرّد والمزيد</p>
+    <div class="example">
+      <h3>⭐ نقاط العربي: <span id="arPoints">0</span></h3>
+      <p>نجوم العربي: <span id="arStars">0</span> ⭐</p>
+      <div class="progress-track"><div id="arProgressFill" class="progress-fill"></div></div>
+      <p id="arProgressText">ابدئي أول مستوى!</p>
+    </div>
+    <div id="arLevels" class="level-grid">
+      <div class="level-card" id="arCard1">
+        <div class="big">🌷</div><h3>المستوى الأول</h3><p>سهل</p>
+        <button onclick="startLevel('ar',1)">ابدئي ✨</button>
+      </div>
+      <div class="level-card locked" id="arCard2">
+        <div class="big">🦋</div><h3>المستوى الثاني</h3><p>متوسط</p>
+        <button id="arBtn2" onclick="startLevel('ar',2)" disabled>🔒 مغلق</button>
+      </div>
+      <div class="level-card locked" id="arCard3">
+        <div class="big">👑</div><h3>المستوى الثالث</h3><p>صعب</p>
+        <button id="arBtn3" onclick="startLevel('ar',3)" disabled>🔒 مغلق</button>
+      </div>
+    </div>
+    <div id="arQuiz" class="example quizArea hidden" dir="rtl">
+      <h3 id="arLevelTitle"></h3>
+      <p id="arQuizProgress"></p>
+      <p id="arQuizTimer" class="quizTimer"></p>
+      <div class="progress-track"><div id="arQuestionFill" class="progress-fill"></div></div>
+      <h3 id="arQuizQuestion" class="quizQuestion"></h3>
+      <div id="arQuizOptions"></div>
+      <p id="arQuizFeedback" class="feedback"></p>
+      <p id="arQuizResult" class="quizResult"></p>
+      <button id="arNextBtn" class="hidden" onclick="nextQuestion('ar')">السؤال التالي ➡️</button>
+      <button id="arBackBtn" class="hidden" onclick="showLevels('ar')">العودة للمستويات 🌷</button>
+    </div>
+    <button onclick="page('practice')">اختيار اللغة 🔄</button>
+  </div>
+</section>
+
+<!-- English challenges -->
+<section id="englishChallenges" class="hidden">
+  <div class="card" dir="ltr">
+    <h2>💜 English Challenges</h2>
+    <p>Present Simple</p>
+    <div class="example">
+      <h3>⭐ English Points: <span id="enPoints">0</span></h3>
+      <p>English Stars: <span id="enStars">0</span> ⭐</p>
+      <div class="progress-track"><div id="enProgressFill" class="progress-fill"></div></div>
+      <p id="enProgressText">Start your first level!</p>
+    </div>
+    <div id="enLevels" class="level-grid">
+      <div class="level-card" id="enCard1">
+        <div class="big">🌸</div><h3>Level 1</h3><p>Easy</p>
+        <button onclick="startLevel('en',1)">Start ✨</button>
+      </div>
+      <div class="level-card locked" id="enCard2">
+        <div class="big">🦋</div><h3>Level 2</h3><p>Medium</p>
+        <button id="enBtn2" onclick="startLevel('en',2)" disabled>🔒 Locked</button>
+      </div>
+      <div class="level-card locked" id="enCard3">
+        <div class="big">👑</div><h3>Level 3</h3><p>Hard · 60 seconds</p>
+        <button id="enBtn3" onclick="startLevel('en',3)" disabled>🔒 Locked</button>
+      </div>
+    </div>
+    <div id="enQuiz" class="example quizArea hidden">
+      <h3 id="enLevelTitle"></h3>
+      <p id="enQuizProgress"></p>
+      <p id="enQuizTimer" class="quizTimer"></p>
+      <div class="progress-track"><div id="enQuestionFill" class="progress-fill"></div></div>
+      <h3 id="enQuizQuestion" class="quizQuestion"></h3>
+      <div id="enQuizOptions"></div>
+      <p id="enQuizFeedback" class="feedback"></p>
+      <p id="enQuizResult" class="quizResult"></p>
+      <button id="enNextBtn" class="hidden" onclick="nextQuestion('en')">Next question ➡️</button>
+      <button id="enBackBtn" class="hidden" onclick="showLevels('en')">Back to levels 🌷</button>
+    </div>
+    <button onclick="page('practice')">Choose language 🔄</button>
+  </div>
+</section>
+
+<section id="gallery" class="hidden">
+  <div class="card">
+    <h2>My Cute Gallery 🎨</h2>
+    <div class="gallery">
+      <div class="picture">🎀</div><div class="picture">🦋</div>
+      <div class="picture">🌷</div><div class="picture">🧸</div>
+      <div class="picture">🍓</div><div class="picture">🌈</div>
+    </div>
+  </div>
+</section>
+
+<section id="game" class="hidden">
+  <div class="card">
+    <h2>Catch the Hearts 🐰</h2>
+    <p>Score: <span id="score">0</span></p>
+    <div id="arena"><div id="bunny" style="left:50%">🐰</div></div>
+    <button onclick="move(-0.08)">⬅️</button>
+    <button onclick="move(0.08)">➡️</button>
+    <button onclick="startGame()">START ▶️</button>
+    <button onclick="stopGame()">STOP ⏹️</button>
+    <p>اسحبي إصبعك داخل مساحة اللعب لتحريك الأرنب.</p>
+  </div>
+</section>
+
+<section id="about" class="hidden">
+  <div class="card">
+    <div class="big">💗</div>
+    <h2>About Pinkora</h2>
+    <p>My little world of learning, creativity and fun!</p>
+  </div>
+</section>
+</main>
+
+<footer>Made with love by Pinkora ♡ 🎀</footer>
+
+<script>
+function page(id){
+  document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  if(id==='game')drawBunny();
+  window.scrollTo(0,0);
+}
+
+/* الأسئلة منفصلة تمامًا حسب اللغة */
+const questions={
+ar:{
+1:[
+{q:'الفعل «كتب» هو:',o:['ثلاثي مجرد','ثلاثي مزيد','رباعي مجرد'],a:0,why:'كتب ثلاثي مجرد؛ حروفه الأصلية ثلاثة.'},
+{q:'الفعل «استخرج» هو:',o:['ثلاثي مجرد','مزيد بحرف','مزيد بثلاثة أحرف'],a:2,why:'أصل الفعل خرج، وزادت الألف والسين والتاء.'},
+{q:'أي فعل رباعي مجرد؟',o:['أكرم','دحرج','استغفر'],a:1,why:'دحرج رباعي مجرد.'},
+{q:'الفعل «شارك» هو:',o:['ثلاثي مجرد','مزيد بحرف','مزيد بحرفين'],a:1,why:'شارك مزيد بالألف.'},
+{q:'الفعل «تعلّم» هو:',o:['ثلاثي مجرد','مزيد بحرف','مزيد بحرفين'],a:2,why:'تعلّم مزيد بالتاء والتضعيف.'}
+],
+2:[
+{q:'الفعل «انطلق» هو:',o:['ثلاثي مجرد','مزيد بحرف','مزيد بحرفين'],a:2,why:'أصل الفعل طلق، وزادت الهمزة والنون.'},
+{q:'أي فعل مزيد بثلاثة أحرف؟',o:['استغفر','أكرم','شارك'],a:0,why:'استغفر مزيد بالألف والسين والتاء.'},
+{q:'الفعل «زلزل» هو:',o:['ثلاثي مجرد','رباعي مجرد','رباعي مزيد'],a:1,why:'زلزل يتكوّن من أربعة أحرف أصلية.'},
+{q:'أي فعل مزيد بحرف واحد؟',o:['كتب','أكرم','دحرج'],a:1,why:'أكرم مزيد بالهمزة.'},
+{q:'الفعل «اجتمع» هو:',o:['ثلاثي مجرد','مزيد بحرفين','مزيد بثلاثة أحرف'],a:1,why:'اجتمع مزيد بالهمزة والتاء.'}
+],
+3:[
+{q:'ما أصل الفعل «استخرج»؟',o:['خرج','خرجت','خراج'],a:0,why:'الأصل هو خرج.'},
+{q:'أي فعل رباعي مجرد؟',o:['استغفر','دحرج','انطلق'],a:1,why:'دحرج رباعي مجرد.'},
+{q:'«أكرم» فعل:',o:['ثلاثي مجرد','ثلاثي مزيد بحرف','ثلاثي مزيد بحرفين'],a:1,why:'زادت الهمزة على حروف الفعل الأصلية.'},
+{q:'أي فعل مزيد بحرفين؟',o:['تعلّم','كتب','دحرج'],a:0,why:'تعلّم مزيد بالتاء والتضعيف.'},
+{q:'«استغفر» مزيد بـ:',o:['حرف واحد','حرفين','ثلاثة أحرف'],a:2,why:'زادت الألف والسين والتاء.'}
+]},
+en:{
+1:[
+{q:'She _____ to school every day.',o:['go','goes','going'],a:1,why:'Use goes with she.'},
+{q:'He _____ like coffee.',o:["don't","doesn't","isn't"],a:1,why:'Use doesn’t with he.'},
+{q:'_____ they play tennis?',o:['Does','Are','Do'],a:2,why:'Use Do with they.'},
+{q:'I _____ football on Fridays.',o:['plays','play','playing'],a:1,why:'Use the base verb with I.'},
+{q:'He _____ TV every evening.',o:['watch','watches','watching'],a:1,why:'Add -es to watch with he.'}
+],
+2:[
+{q:'Choose the correct negative sentence.',o:["She doesn't likes milk.","She don't like milk.","She doesn't like milk."],a:2,why:'Use the base verb after doesn’t.'},
+{q:'Choose the correct question.',o:['Does she reads?','Does she read?','Do she read?'],a:1,why:'Does + she + base verb.'},
+{q:'My brother _____ football.',o:['play','plays','playing'],a:1,why:'Use plays with my brother.'},
+{q:'They _____ eat meat.',o:["doesn't","don't","isn't"],a:1,why:'Use don’t with they.'},
+{q:'_____ your sister speak English?',o:['Do','Does','Is'],a:1,why:'Use Does with your sister.'}
+],
+3:[
+{q:'Choose the correct sentence.',o:["He go to school.","He goes to school.","He going to school."],a:1,why:'Use goes with he.'},
+{q:'Change to a question: She likes cats.',o:['Do she like cats?','Does she likes cats?','Does she like cats?'],a:2,why:'Use Does + subject + base verb.'},
+{q:'Choose the correct sentence.',o:["They doesn't study.","They don't study.","They not study."],a:1,why:'Use don’t with they.'},
+{q:'My mother _____ dinner every day.',o:['cook','cooks','cooking'],a:1,why:'Use cooks with my mother.'},
+{q:'Which word is a Present Simple keyword?',o:['Yesterday','Tomorrow','Usually'],a:2,why:'Usually describes a habit.'}
+]}
+};
+
+/* لكل لغة نقاط ونجوم وتقدم مستقل */
+const stats={
+ar:{points:0,stars:0,unlocked:1,attempted:{},levelScore:0,index:0,level:1,answered:false,finished:false,timer:null,seconds:60},
+en:{points:0,stars:0,unlocked:1,attempted:{},levelScore:0,index:0,level:1,answered:false,finished:false,timer:null,seconds:60}
+};
+
+function openChallenge(lang){
+  page(lang==='ar'?'arabicChallenges':'englishChallenges');
+  showLevels(lang);
+}
+
+function startLevel(lang,level){
+  const s=stats[lang];
+  if(level>s.unlocked)return;
+  clearInterval(s.timer);
+  s.level=level;s.index=0;s.levelScore=0;s.answered=false;s.finished=false;s.seconds=60;
+  document.getElementById(lang+'Quiz').classList.remove('hidden');
+  document.getElementById(lang+'Levels').classList.add('hidden');
+  document.getElementById(lang+'QuizResult').textContent='';
+  document.getElementById(lang+'BackBtn').classList.add('hidden');
+  document.getElementById(lang+'NextBtn').classList.add('hidden');
+  document.getElementById(lang+'LevelTitle').textContent=
+    lang==='ar'?['','🌸 المستوى الأول','🦋 المستوى الثاني','👑 المستوى الثالث'][level]:
+    ['','🌸 Level 1','🦋 Level 2','👑 Level 3'][level];
+  showQuestion(lang);
+  if(level===3){
+    updateTimer(lang);
+    s.timer=setInterval(()=>{
+      s.seconds--;updateTimer(lang);
+      if(s.seconds<=0)finishLevel(lang,true);
+    },1000);
+  }else{
+    document.getElementById(lang+'QuizTimer').textContent=
+      lang==='ar'?'خدي وقتك 🌷':'Take your time 🌷';
+  }
+}
+
+function updateTimer(lang){
+  const s=stats[lang];
+  document.getElementById(lang+'QuizTimer').textContent=
+    lang==='ar'?'⏱️ الوقت المتبقي: '+s.seconds+' ثانية':'⏱️ Time left: '+s.seconds+' seconds';
+}
+
+function showQuestion(lang){
+  const s=stats[lang],q=questions[lang][s.level][s.index];
+  s.answered=false;
+  document.getElementById(lang+'QuizProgress').textContent=
+    lang==='ar'?'السؤال '+(s.index+1)+' من 5':'Question '+(s.index+1)+' of 5';
+  document.getElementById(lang+'QuestionFill').style.width=(s.index/5*100)+'%';
+  document.getElementById(lang+'QuizQuestion').textContent=q.q;
+  document.getElementById(lang+'QuizFeedback').textContent='';
+  document.getElementById(lang+'QuizResult').textContent='';
+  document.getElementById(lang+'QuizOptions').innerHTML='';
+  document.getElementById(lang+'NextBtn').classList.add('hidden');
+
+  q.o.forEach((option,i)=>{
+    const b=document.createElement('button');
+    b.className='answer';b.textContent=option;
+    b.onclick=()=>answerQuestion(lang,i,b);
+    document.getElementById(lang+'QuizOptions').appendChild(b);
+  });
+}
+
+function answerQuestion(lang,index,button){
+  const s=stats[lang];
+  if(s.answered||s.finished)return;
+  s.answered=true;
+  const q=questions[lang][s.level][s.index];
+  document.querySelectorAll('#'+lang+'QuizOptions button').forEach(b=>b.disabled=true);
+  const feedback=document.getElementById(lang+'QuizFeedback');
+
+  if(index===q.a){
+    s.levelScore++;s.points+=10;
+    feedback.textContent=lang==='ar'?'إجابة صحيحة! +10 نقاط 🎉':'Correct! +10 points 🎉';
+    feedback.style.color='#21864b';
+    button.style.background='#a5dfb5';
+  }else{
+    feedback.textContent=lang==='ar'
+      ?'الإجابة الصحيحة: '+q.o[q.a]+'. '+q.why
+      :'Correct answer: '+q.o[q.a]+'. '+q.why;
+    feedback.style.color='#c53f76';
+    document.querySelectorAll('#'+lang+'QuizOptions button')[q.a].style.background='#a5dfb5';
+  }
+
+  updateScore(lang);
+  document.getElementById(lang+'QuestionFill').style.width=((s.index+1)/5*100)+'%';
+  document.getElementById(lang+'NextBtn').textContent=
+    s.index===4?(lang==='ar'?'عرض النتيجة 🏆':'Show results 🏆'):
+    (lang==='ar'?'السؤال التالي ➡️':'Next question ➡️');
+  document.getElementById(lang+'NextBtn').classList.remove('hidden');
+}
+
+function nextQuestion(lang){
+  const s=stats[lang];
+  if(!s.answered||s.finished)return;
+  if(s.index<4){
+    s.index++;showQuestion(lang);
+  }else finishLevel(lang,false);
+}
+
+function finishLevel(lang,timeUp){
+  const s=stats[lang];
+  if(s.finished)return;
+  s.finished=true;clearInterval(s.timer);
+  document.querySelectorAll('#'+lang+'QuizOptions button').forEach(b=>b.disabled=true);
+  document.getElementById(lang+'NextBtn').classList.add('hidden');
+  document.getElementById(lang+'BackBtn').classList.remove('hidden');
+
+  const passed=s.levelScore>=4;
+  let message=timeUp?(lang==='ar'?'انتهى الوقت! ⏰ ':'Time is up! ⏰ '):'';
+
+  message+=lang==='ar'
+    ?'نتيجتك: '+s.levelScore+' من 5. '
+    :'Your score: '+s.levelScore+' out of 5. ';
+
+  if(passed){
+    if(!s.attempted[s.level]){
+      s.stars++;s.attempted[s.level]=true;
+    }
+    if(s.level===s.unlocked&&s.unlocked<3)s.unlocked++;
+    message+=lang==='ar'
+      ?'أحسنتِ! نجحتِ وحصلتِ على نجمة ⭐'
+      :'Great job! You passed and earned a star ⭐';
+    if(s.level<3)message+=lang==='ar'
+      ?' المستوى التالي مفتوح! 🔓'
+      :' Next level unlocked! 🔓';
+    else message+=lang==='ar'
+      ?' أنتِ بطلة Pinkora! 👑'
+      :' You are a Pinkora champion! 👑';
+  }else{
+    message+=lang==='ar'
+      ?' تحتاجين 4 إجابات صحيحة للنجاح. حاولي مرة أخرى! 💪'
+      :' You need 4 correct answers to pass. Try again! 💪';
+  }
+
+  document.getElementById(lang+'QuizResult').textContent=message;
+  document.getElementById(lang+'QuizFeedback').textContent='';
+  updateScore(lang);updateLevels(lang);
+}
+
+function updateScore(lang){
+  const s=stats[lang];
+  document.getElementById(lang+'Points').textContent=s.points;
+  document.getElementById(lang+'Stars').textContent=s.stars;
+  document.getElementById(lang+'ProgressFill').style.width=((s.unlocked-1)/3*100)+'%';
+  document.getElementById(lang+'ProgressText').textContent=lang==='ar'
+    ?(s.unlocked===3?'وصلتِ للمستوى الأخير! 👑':'المستوى المفتوح التالي: '+s.unlocked)
+    :(s.unlocked===3?'You reached the final level! 👑':'Next available level: '+s.unlocked);
+}
+
+function updateLevels(lang){
+  const s=stats[lang];
+  for(let i=1;i<=3;i++){
+    const card=document.getElementById(lang+'Card'+i);
+    const btn=i===1?card.querySelector('button'):document.getElementById(lang+'Btn'+i);
+    if(i<=s.unlocked){
+      card.classList.remove('locked');btn.disabled=false;
+      btn.textContent=s.attempted[i]
+        ?(lang==='ar'?'إعادة اللعب 🔄':'Play again 🔄')
+        :(lang==='ar'?'ابدئي ✨':'Start ✨');
+    }else{
+      card.classList.add('locked');btn.disabled=true;
+      btn.textContent=lang==='ar'?'🔒 مغلق':'🔒 Locked';
+    }
+  }
+}
+
+function showLevels(lang){
+  clearInterval(stats[lang].timer);
+  document.getElementById(lang+'Quiz').classList.add('hidden');
+  document.getElementById(lang+'Levels').classList.remove('hidden');
+  updateLevels(lang);
+}
+
+/* لعبة الأرنب */
+const arena=document.getElementById('arena'),bunny=document.getElementById('bunny');
+let x=.5,score=0,running=false,hearts=[],loopId;
+
+function drawBunny(){bunny.style.left=(x*arena.clientWidth)+'px';}
+function move(amount){x=Math.max(.06,Math.min(.94,x+amount));drawBunny();}
+
+arena.addEventListener('pointerdown',e=>{
+  if(!running)return;
+  arena.setPointerCapture(e.pointerId);drag(e);
+});
+arena.addEventListener('pointermove',e=>{
+  if(running&&e.buttons)drag(e);
+});
+function drag(e){
+  const r=arena.getBoundingClientRect();
+  x=Math.max(.06,Math.min(.94,(e.clientX-r.left)/r.width));drawBunny();
+}
+function stopGame(){
+  running=false;cancelAnimationFrame(loopId);
+  hearts.forEach(h=>h.el.remove());hearts=[];
+  arena.querySelectorAll('.heart').forEach(h=>h.remove());
+}
+function startGame(){
+  stopGame();score=0;x=.5;
+  document.getElementById('score').textContent=score;
+  drawBunny();running=true;
+  let last=performance.now(),spawn=0;
+  function loop(now){
+    if(!running)return;
+    const dt=Math.min((now-last)/1000,.04);last=now;spawn+=dt;
+    if(spawn>.7){
+      const el=document.createElement('span');
+      el.className='heart';el.textContent='💗';
+      el.style.position='absolute';el.style.left=Math.random()*85+'%';
+      el.style.top='0';el.style.fontSize='30px';arena.appendChild(el);
+      hearts.push({el,y:0});spawn=0;
+    }
+    const br=bunny.getBoundingClientRect();
+    hearts=hearts.filter(h=>{
+      h.y+=150*dt;h.el.style.top=h.y+'px';
+      const hr=h.el.getBoundingClientRect();
+      const hit=hr.left<br.right&&hr.right>br.left&&hr.top<br.bottom&&hr.bottom>br.top;
+      if(hit){
+        score++;document.getElementById('score').textContent=score;
+        h.el.remove();return false;
+      }
+      if(h.y>arena.clientHeight){h.el.remove();return false;}
+      return true;
+    });
+    loopId=requestAnimationFrame(loop);
+  }
+  loopId=requestAnimationFrame(loop);
+}
+window.addEventListener('resize',drawBunny);
+drawBunny();updateScore('ar');updateScore('en');updateLevels('ar');updateLevels('en');
+</script>
+</body>
+</html>
